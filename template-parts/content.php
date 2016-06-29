@@ -12,19 +12,23 @@
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 	<header class="entry-header">
 		<?php
-			if ( is_single() ) {
-				the_category('<h3 class="entry-category">', '</h3');
-				the_title( '<h1 class="entry-title">', '</h1>' );
-			} else {
-				the_category('<h3 class="entry-category">', '</h3');
-				the_title( '<h2 class="entry-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' );
+			if ( is_single() ) { ?>
+				<h3 class="entry-category">
+					<?php the_category(' | '); ?>
+				</h3>	
+				<?php the_title( '<h1 class="entry-title">', '</h1>' );
+			} else { ?>
+				<h3 class="entry-category">
+					<?php the_category(' | '); ?>
+				</h3>	
+				<?php the_title( '<h1 class="entry-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h1>' );
 			}
 
 		if ( 'post' === get_post_type() ) : ?>
 		<div class="entry-meta">
 			<ul>
 				<li><?php the_time( 'l, F jS, Y'); ?></li>
-				<li>By: <?php the_author(); ?></li>
+				<li><span>By: </span><?php the_author(); ?></li>
 			</ul>
 		</div><!-- .entry-meta -->
 		<?php
@@ -35,7 +39,7 @@
 		<?php
 			the_content( sprintf(
 				/* translators: %s: Name of current post. */
-				wp_kses( __( 'Continue reading %s <span class="meta-nav">&rarr;</span>', 'goldengirl-sassified' ), array( 'span' => array( 'class' => array() ) ) ),
+				wp_kses( __( 'Keep reading %s <span class="meta-nav">&rarr;</span>', 'goldengirl-sassified' ), array( 'span' => array( 'class' => array() ) ) ),
 				the_title( '<span class="screen-reader-text">"', '"</span>', false )
 			) );
 

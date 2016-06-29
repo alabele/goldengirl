@@ -93,6 +93,28 @@ function goldengirl_sassified_content_width() {
 add_action( 'after_setup_theme', 'goldengirl_sassified_content_width', 0 );
 
 /**
+ * Enqueue scripts and styles.
+ */
+function goldengirl_sassified_scripts() {
+	wp_enqueue_style( 'goldengirl-sassified-style', get_stylesheet_uri() );
+
+	wp_enqueue_script( 'goldengirl-sassified-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20151215', true );
+
+	wp_enqueue_script( 'goldengirl-sassified-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20151215', true );
+
+	wp_enqueue_style( 'bootstrap', get_template_directory_uri() . '/bootstrap-3.3.6-dist/css/bootstrap.min.css');
+
+	wp_enqueue_script( 'bootstrapjs', get_template_directory_uri() . '/bootstrap-3.3.6-dist/js/bootstrap.min.js', array('jquery'), '', true );
+
+	wp_enqueue_style( 'google-fonts', '//fonts.googleapis.com/css?family=Raleway:400,500,600,700,300|Playfair+Display:400italic,400,700|Lato:300,400|Old+Standard+TT:400italic', array(), null );
+
+	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
+		wp_enqueue_script( 'comment-reply' );
+	}
+}
+add_action( 'wp_enqueue_scripts', 'goldengirl_sassified_scripts' );
+
+/**
  * Register widget area.
  *
  * @link https://developer.wordpress.org/themes/functionality/sidebars/#registering-a-sidebar
@@ -109,22 +131,6 @@ function goldengirl_sassified_widgets_init() {
 	) );
 }
 add_action( 'widgets_init', 'goldengirl_sassified_widgets_init' );
-
-/**
- * Enqueue scripts and styles.
- */
-function goldengirl_sassified_scripts() {
-	wp_enqueue_style( 'goldengirl-sassified-style', get_stylesheet_uri() );
-
-	wp_enqueue_script( 'goldengirl-sassified-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20120206', true );
-
-	wp_enqueue_script( 'goldengirl-sassified-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20130115', true );
-
-	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
-		wp_enqueue_script( 'comment-reply' );
-	}
-}
-add_action( 'wp_enqueue_scripts', 'goldengirl_sassified_scripts' );
 
 
 /**
@@ -199,6 +205,19 @@ function my_register_sidebars() {
 		)
 	);
 
+	/* Register the 'footer-left' sidebar. */
+	register_sidebar(
+		array(
+			'id' => 'footer-center',
+			'name' => __( 'Footer Center' ),
+			'description' => __( 'Widget sidebar for center of footer.' ),
+			'before_widget' => '<div id="%1$s" class="widget %2$s">',
+			'after_widget' => '</div>',
+			'before_title' => '<h3 class="widget-title">',
+			'after_title' => '</h3>'
+		)
+	);
+
 	/* Repeat register_sidebar() code for additional sidebars. */
 }
 
@@ -223,6 +242,12 @@ add_action( 'init', 'create_custom_post_types' );
 
 // Register Custom Navigation Walker
 require_once('wp_bootstrap_navwalker.php');
+
+// Register Custom Fields - Portfolio
+require_once('inc/custom-fields-portfolio.php');
+
+// Register Library Custom Post Type
+require_once('inc/library-custom-post-type.php');
 
 // Custom Image Size for Landing Pages
 

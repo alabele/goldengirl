@@ -103,34 +103,38 @@
 
 	<header id="masthead" class="site-header" role="banner">
 		<!--NEW NAV -->
-		<nav class="navbar navbar-default main-navigation" role="navigation">
-		  <div class="container-fluid">
-		    <!-- Brand and toggle get grouped for better mobile display -->
-		    <div class="navbar-header">
-		      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-		        <span class="sr-only">Toggle navigation</span>
-		        <span class="icon-bar"></span>
-		        <span class="icon-bar"></span>
-		        <span class="icon-bar"></span>
-		      </button>
-		    </div>
-
-		        <?php
-		            wp_nav_menu( array(
-		                'menu'              => 'primary',
-		                'theme_location'    => 'primary',
-		                'depth'             => 2,
-		                'container'         => 'div',
-		                'container_class'   => 'collapse navbar-collapse',
-		        'container_id'      => 'bs-example-navbar-collapse-1',
-		                'menu_class'        => 'nav navbar-nav',
-		                'fallback_cb'       => 'wp_bootstrap_navwalker::fallback',
-		                'walker'            => new wp_bootstrap_navwalker())
-		            );
-		        ?>
-		    </div>
-		</nav>
-		<!-- END NEW NAV -->
+    <nav class="navbar navbar-default navbar-static-top">
+      <div class="container-fluid">
+      <div class="clearfix"></div>
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <?php dynamic_sidebar( 'header_widget' ); ?>
+        </div> 
+        <!-- Collect the nav links, forms, and other content for toggling -->
+          <?php
+                wp_nav_menu( array(
+                    'menu'              => 'primary',
+                    'theme_location'    => 'primary',
+                    'depth'             => 2,
+                    'container'         => 'div',
+                    'container_class'   => 'collapse navbar-collapse',
+                'container_id'      => 'bs-example-navbar-collapse-1',
+                    'menu_class'        => 'nav navbar-nav navbar-center',
+                    'fallback_cb'       => 'wp_bootstrap_navwalker::fallback',
+                    'link_before' => '<span class="link-hover">', 
+                    'link_after' => '</span>',
+                    'walker'            => new wp_bootstrap_navwalker())
+                );
+            ?>
+      </div><!-- .container-->
+    </nav>
+    <!-- END BOOTSTRAP NAV-->
 		<div class="main-hero">
 			<div class="title-banner">
 					<h1><?php bloginfo( 'name' ); ?></h1>

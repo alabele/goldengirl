@@ -547,17 +547,26 @@ a:active {
 		background-color: transparent;
 		&:hover {
 		background-color: transparent;
-		text-decoration: underline;
+		/*text-decoration: underline;*/
 		}
 	}
-	.navbar-nav li a {
+	.navbar-nav li {
+		font-family: $font__main;
+		text-transform: uppercase;
+		font-size: 1.3em;
+		font-weight:200;
+		a {
 		@media screen and (max-width: 768px) {
 		  	border-bottom: 1px #eee solid;
 		  }
 		&:hover {
 			background-color: transparent;
-			text-decoration: underline;
-		}	
+			/*text-decoration: underline;*/
+			}
+		&:active {
+			text-decoration: none;
+			}		
+		}
 	}
 }
 
@@ -615,11 +624,16 @@ box-shadow: 0px 2px 5px 4px rgba(0,0,0,0.53);*/
 		font-size: 1em;
     	font-weight: 100!important;
 	}
-	a {@media screen and (max-width: 768px) {
+	a {
+		@media screen and (max-width: 768px) {
 		  	border-bottom: none !important;
 		  	text-align: center;
 		  	font-style: italic;
 		  }
+	}
+	a:active {
+		color: black;
+		text-decoration: underline;
 	}
 }
 
@@ -2040,11 +2054,210 @@ object {
 .0 Single Blog Post 
 --------------------------------------------------------------*/
 .single-post-content {
+	margin-top: 5%;
 	h1 {
 		font-family: $font__header;
-		font-size: 3.5em;
+		font-size: 3.3em;
 	}
 	.form-submit input{
-		background-color: red;
+		background-color: $golden_turq;
+		height: 50px;
+		width: 200px;
+		font-family: $font__main;
+		text-transform: uppercase;
+		color: white;
+		box-shadow: none;
+		font-size: 1em;
+		border: 2px solid $golden_turq;
+		text-shadow: none;
+		&:hover {
+			background-color: white;
+			color: $golden_turq;
+			box-shadow: none;
+			border: 2px solid $golden_turq;
+		}
 	}
+	.entry-category {
+		text-transform: uppercase;
+		font-size: 1.2em;
+		a {
+			border-bottom: solid 1px $golden_turq;
+			color: $golden__grey;
+			&:hover {
+				color: lighten($golden__grey, 15%);
+				text-decoration: none;
+			}
+		}
+
+	}
+	.entry-meta ul {
+		list-style: none;
+		margin: 0;
+		padding-left: 0;
+		font-family: $font__main;
+		font-size: 1.2em;
+		font-weight: 200;
+		li {
+			display: inline-block;
+			padding-right: 15px;
+			span {
+				color: $golden_turq;
+			}
+		}
+	}
+	.entry-content {
+		font-family: $font__main;
+		font-size: 1.3em;
+	}
+}
+#comments {
+	.comments-title {
+		font-size: 1.5em;
+		color: $golden_turq;
+		font-weight: 400;
+	}
+}
+.single-post-sidebar {
+	margin-top: 5%;
+	.recent-posts-header {
+		text-transform: uppercase;
+		text-align: center;
+		background: black;
+		padding: 15px;
+		color: white;
+		margin-bottom: 25px;
+		font-family: $font__header;
+	}
+	.recent-post-container {
+		margin-bottom: 20px;
+		.entry-title a {
+			color: $golden__blue;
+			&:hover  {
+				color: lighten($golden__blue, 10%);
+			}
+		}
+	}
+}
+/*--------------------------------------------------------------
+.0 Index Page Post 
+--------------------------------------------------------------*/
+.index-page-content {
+	margin-top: 5%;
+	article {
+		background: lighten(#eee, 3%);
+		padding: 2% 4% 4% 4%;
+	}
+	h1	{
+		font-family: $font__header;
+		font-size: 2.6em;
+		a {
+			color: $golden_turq;
+		}
+	}
+	.entry-category {
+		text-transform: uppercase;
+		font-size: 1.2em;
+		a {
+			border-bottom: solid 1px $golden_turq;
+			color: $golden__grey;
+			&:hover {
+				color: lighten($golden__grey, 15%);
+				text-decoration: none;
+			}
+		}
+
+	}
+	.entry-meta ul {
+		list-style: none;
+		margin: 0;
+		padding-left: 0;
+		font-family: $font__main;
+		font-size: 1.2em;
+		font-weight: 200;
+		li {
+			display: inline-block;
+			padding-right: 15px;
+			span {
+				color: $golden_turq;
+			}
+		}
+	}
+	.entry-content {
+		font-family: $font__main;
+		font-size: 1.3em;
+	}
+	.more-link {
+	    position: relative;
+	    top: 20px;
+	    color: $golden_coral;
+	}
+}
+
+.blog-hero {
+	/*background: url(images/blog-header-laurenabele.png) center no-repeat;*/
+	height: 300px;
+	width: 100%;
+	img {
+		margin:auto;
+		display: block;
+	}
+}
+
+/*--------------------------------------------------------------
+.0 Bootstrap Nav Styles Overrides
+--------------------------------------------------------------*/
+.navbar-default {
+    background-color: white !important;
+    border-color: white !important;
+    #menu-primary a {
+    	font-family: $font__main !important;
+    	text-transform: uppercase !important;
+    	font-size: 1.6em !important;
+    	font-weight: 100 !important;
+    }
+    .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:focus, .navbar-default .navbar-nav>.active>a:hover {
+    	background: white !important;
+    	/*text-decoration: underline;*/
+    }
+    .dropdown-menu {
+    	background: url("images/white-overlay.png");
+    }
+    .dropdown-menu>li>a:hover {
+    	text-decoration: underline;
+    }
+}
+
+
+/* Styles for Main Nav Hover + Active States */
+
+.navbar-nav > li > a span {
+    display: block;
+    position: relative;
+}
+.navbar-nav > li > a span::after {
+	top: 80%;
+	position: absolute;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    padding: 2.2px;
+    background: $golden_coral;
+    content: '';
+    opacity: 0;
+    -webkit-transition: height 0.3s, opacity 0.3s, -webkit-transform 0.3s;
+    -moz-transition: height 0.3s, opacity 0.3s, -moz-transform 0.3s;
+    transition: height 0.3s, opacity 0.3s, transform 0.3s;
+    -webkit-transform: translateY(-10px);
+}
+
+.caret::after {
+	display: none;
+}
+
+.navbar-nav > li > a:hover span::after, .navbar-nav > li > a:focus span::after, .navbar-nav > li.active > a span::after {
+	 height: 2px;
+    opacity: 1;
+    -webkit-transform: translateY(5px);
+    -moz-transform: translateY(5px);
+    transform: translateY(5px);
 }

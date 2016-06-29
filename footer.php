@@ -12,13 +12,16 @@
 ?>
 
 	</div><!-- #content -->
-	<div class="container site-footer">
+	<div class="container-fluid site-footer">
 		<footer id="colophon" role="contentinfo">
 			<div class="row">
 				<div  class="col-xs-12 col-sm-4 col-md-4 col-lg-4 footer-sidebar footer-left">
 					<?php dynamic_sidebar( 'footer-left' ); ?>
 				</div>
-				<div  class="col-xs-12 col-sm-8 col-md-8 col-lg-8 footer-sidebar footer-right">
+				<div  class="col-xs-12 col-sm-4 col-md-4 col-lg-4 footer-sidebar footer-center">
+					<?php dynamic_sidebar( 'footer-center' ); ?>
+				</div>
+				<div  class="col-xs-12 col-sm-4 col-md-4 col-lg-4 footer-sidebar footer-right">
 					<?php dynamic_sidebar( 'footer-right' ); ?>
 				</div>
 			</div><!--row -->	

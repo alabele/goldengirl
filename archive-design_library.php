@@ -17,17 +17,35 @@ get_header('blog'); ?>
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main container" role="main">
 			<div class="row">
-				<div class="index-page-content col-md-9">
+				<div class="col-md-9">
 					<?php
 					if ( have_posts() ) :
 
-						if ( is_home() && ! is_front_page() ) : ?>
+						 ?>
 							<header>
 								<h1 class="page-title screen-reader-text"><?php single_post_title(); ?></h1>
 							</header>
-
+				</div><!-- .col-md-9 -->
+			</div><!-- .row -->
+			<div class="row">
+				<div class="col-lg-12">
+					<select name="cars">
+					
+					<?php $terms = get_terms( array(
+					    'taxonomy' => 'tech_category',
+					    'hide_empty' => false,
+					) ); ?>
+					    <?php foreach ( $terms as $term ) {
+					        echo '<option value="'. $term->slug.'">' . $term->name . '</option>';
+					    }
+					?>
+					</select>
+				</div><!-- .col-lg-12 -->
+			</div><!-- .row -->
+			<div class="row">
+				<div class="index-page-content col-md-9">				
 						<?php
-						endif;
+						
 
 						/* Start the Loop */
 						while ( have_posts() ) : the_post();
@@ -54,4 +72,5 @@ get_header('blog'); ?>
 	</div><!-- #primary -->
 
 <?php
+get_sidebar();
 get_footer();
