@@ -49,6 +49,16 @@ get_header('blog'); ?>
 
 					endif; ?>
 				</div><!-- . index-page-content -->	
+				<div class="index-page-sidebar col-md-3 page-sidebar-static" id="page-sidebar">
+					<div class="sidebar-wrapper">
+						<img class="img-responsive animated bounceIn" src="<?php echo esc_url( get_stylesheet_directory_uri()); ?>/images/bouganvilla.png"/>
+						<img class="img-responsive animated bounceIn" id="index-sidebar-headshot" src="<?php echo esc_url( get_stylesheet_directory_uri()); ?>/images/mommy-and-maeve1.png"/>
+						<!--<img class="img-responsive animated bounceIn" id="index-sidebar-headshot" src="<?php echo esc_url( get_stylesheet_directory_uri()); ?>/images/blue-gummy-bear.png"/>
+						<img class="img-responsive animated bounceIn" id="index-sidebar-headshot" src="<?php echo esc_url( get_stylesheet_directory_uri()); ?>/images/volvo.png"/>-->
+            <section class="ha-waypoint-sidebar" data-animate-down="page-sidebar-fixed" data-animate-up="page-sidebar-static"></section>
+						<?php dynamic_sidebar( 'index-page-sidebar' ); ?>
+					</div>	 
+				</div><!-- .index-page-sidebar -->
 			</div><!-- .row -->		
 		</main><!-- #main -->
 	</div><!-- #primary -->

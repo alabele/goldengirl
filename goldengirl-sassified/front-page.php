@@ -18,6 +18,7 @@ get_header(); ?>
 				<div class="home-overview">
 					<h1>Howdy! </h1>
 					<?php the_content(); ?>
+					<!--<section class="ha-waypoint" data-animate-down="ha-header-small" data-animate-up="ha-header-large"></section>  -->
 				</div><!-- .home-overview -->	
 			</div><!-- .content-container-->
 		</div><!-- .row -->

@@ -28,18 +28,21 @@ get_header('blog'); ?>
 					endwhile; // End of the loop.
 					?>
 				</div><!-- .single-post-content -->
-				<div class="col-md-3 single-post-sidebar">
-				<h3 class="recent-posts-header">More Good Stuff</h3>
-					<?php
-					    $recentPosts = new WP_Query();
-					    $recentPosts->query('showposts=5');
-					?>
-					<?php while ($recentPosts->have_posts()) : $recentPosts->the_post(); ?>
-					    <div class="recent-post-container">
-					    	<?php the_post_thumbnail() ?>
-					    	<?php the_title('<h4 class="entry-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h4>'); ?></a>
-					    </div>
-					<?php endwhile; ?>
+				<div class="col-md-3 single-post-sidebar page-sidebar-static" id="single-page-sidebar">
+				<div class="sidebar-wrapper">
+					<h3 class="recent-posts-header animated zoomIn">More Good Stuff</h3>
+					<!--<section class="ha-waypoint-single-sidebar" data-animate-down="page-sidebar-fixed" data-animate-up="page-sidebar-static"></section>-->
+						<?php
+						    $recentPosts = new WP_Query();
+						    $recentPosts->query('showposts=5');
+						?>
+						<?php while ($recentPosts->have_posts()) : $recentPosts->the_post(); ?>
+						    <div class="recent-post-container">
+						    	<?php the_post_thumbnail() ?>
+						    	<?php the_title('<h4 class="entry-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h4>'); ?></a>
+						    </div>
+						<?php endwhile; ?>
+					</div><!-- .sidebar-wrapper -->	
 				</div><!-- .single-post-sidebar -->	
 			</div><!-- .row-->	
 

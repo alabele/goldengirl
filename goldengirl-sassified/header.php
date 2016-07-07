@@ -26,6 +26,7 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 <script src="https://maps.googleapis.com/maps/api/js"></script>
+<!--<script src="<?php echo get_stylesheet_directory_uri(); ?>/js/jquery.waypoints.js"></script>-->
 
 <script>
 //Google Maps Script
@@ -93,7 +94,27 @@
 }
 
 </script>
+<script>
+// Animated Navigation Script - 100% offset
+$(document).ready(function () {
+      var $head = $( '#ha-header' );
+      $( '.ha-waypoint' ).each( function(i) {
+        var $el = $( this ),
+          animClassDown = $el.data( 'animateDown' ),
+          animClassUp = $el.data( 'animateUp' );
 
+        $el.waypoint( function( direction ) {
+          if( direction === 'down' && animClassDown ) {
+            $head.attr('class', 'ha-header ' + animClassDown);
+          }
+          else if( direction === 'up' && animClassUp ){
+            $head.attr('class', 'ha-header ' + animClassUp);
+          }
+        }, { offset: '100px' } );
+      } );
+
+        });
+    </script>
 <?php wp_head(); ?>
 </head>
 
@@ -101,53 +122,59 @@
 <div id="page" class="hfeed site">
 	<a class="skip-link screen-reader-text" href="#content"><?php _e( 'Skip to content', 'goldengirl' ); ?></a>
 
-	<header id="masthead" class="site-header" role="banner">
+	<header id="ha-header" class="ha-header ha-header-large">
 		<!--NEW NAV -->
-    <nav class="navbar navbar-default navbar-static-top">
-      <div class="container-fluid">
-      <div class="clearfix"></div>
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <?php dynamic_sidebar( 'header_widget' ); ?>
-        </div> 
-        <!-- Collect the nav links, forms, and other content for toggling -->
-          <?php
-                wp_nav_menu( array(
-                    'menu'              => 'primary',
-                    'theme_location'    => 'primary',
-                    'depth'             => 2,
-                    'container'         => 'div',
-                    'container_class'   => 'collapse navbar-collapse',
-                'container_id'      => 'bs-example-navbar-collapse-1',
-                    'menu_class'        => 'nav navbar-nav navbar-center',
-                    'fallback_cb'       => 'wp_bootstrap_navwalker::fallback',
-                    'link_before' => '<span class="link-hover">', 
-                    'link_after' => '</span>',
-                    'walker'            => new wp_bootstrap_navwalker())
-                );
-            ?>
-      </div><!-- .container-->
-    </nav>
+   <!-- <div class="ha-header-perspective">-->
+      <div class="ha-header-top">
+        <nav class="navbar navbar-default">
+          <div class="container-fluid">
+          <div class="clearfix"></div>
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <?php dynamic_sidebar( 'header_widget' ); ?>
+            </div> 
+            <!-- Collect the nav links, forms, and other content for toggling -->
+              <?php
+                    wp_nav_menu( array(
+                        'menu'              => 'primary',
+                        'theme_location'    => 'primary',
+                        'depth'             => 2,
+                        'container'         => 'div',
+                        'container_class'   => 'collapse navbar-collapse',
+                    'container_id'      => 'bs-example-navbar-collapse-1',
+                        'menu_class'        => 'nav navbar-nav navbar-center',
+                        'fallback_cb'       => 'wp_bootstrap_navwalker::fallback',
+                        'link_before' => '<span class="link-hover">', 
+                        'link_after' => '</span>',
+                        'walker'            => new wp_bootstrap_navwalker())
+                    );
+                ?>
+          </div><!-- .container-->
+        </nav>
+      </div><!-- .ha-header-top-->
+    <!-- </div> .ha-header-perspective --> 
     <!-- END BOOTSTRAP NAV-->
-		<div class="main-hero">
-			<div class="title-banner">
-					<h1><?php bloginfo( 'name' ); ?></h1>
-			</div>	
-			<!--<div class="content">
-				<?php while ( have_posts() ): the_post(); ?>
-					<h1><?php the_title(); ?></h1>
-					<?php the_content(); ?>
-					<a href="<?php echo site_url('/blog/'); ?>" class="btn">View My Blog</a>
-				<?php endwhile; ?> 
-			</div>-->
-			<div class="main-hero-fade"></div>
-		</div><!-- END MAIN HERO-->
+    
 	</header><!-- #masthead -->
-
+ <div class="main-hero">
+      <div class="title-banner">
+          <h1 id="banner-name"><?php bloginfo( 'name' ); ?></h1>
+      </div> 
+      <section class="ha-waypoint" data-animate-down="ha-header-small" data-animate-up="ha-header-large"></section> 
+      <!--<div class="content">
+        <?php while ( have_posts() ): the_post(); ?>
+          <h1><?php the_title(); ?></h1>
+          <?php the_content(); ?>
+          <a href="<?php echo site_url('/blog/'); ?>" class="btn">View My Blog</a>
+        <?php endwhile; ?> 
+      </div>-->
+      <div class="main-hero-fade"></div>
+    </div><!-- END MAIN HERO-->
+<div class="clear-fix"></div>
 	<div id="content" class="site-content">

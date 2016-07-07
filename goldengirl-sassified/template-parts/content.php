@@ -39,7 +39,7 @@
 		<?php
 			the_content( sprintf(
 				/* translators: %s: Name of current post. */
-				wp_kses( __( 'Keep reading %s <span class="meta-nav">&rarr;</span>', 'goldengirl-sassified' ), array( 'span' => array( 'class' => array() ) ) ),
+				wp_kses( __( 'Keep reading %s <span class="meta-nav"></span>', 'goldengirl-sassified' ), array( 'span' => array( 'class' => array() ) ) ),
 				the_title( '<span class="screen-reader-text">"', '"</span>', false )
 			) );
 

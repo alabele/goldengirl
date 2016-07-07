@@ -10,13 +10,13 @@ get_header(); ?>
 <body onload="initMap();">
 	<div id="primary" class="site-content container">
 		<div class="row">
-			<div id="content" role="main" class="about-page">
+			<div id="about-content" role="main" class="about-page">
 				<?php while ( have_posts() ) : the_post(); ?>
 					<div class="content-side-header about-content-container col-lg-4 col-md-4">
 						<!--<h1><?php the_title(); ?></h1> -->
 						<img src="<?php echo get_field("page_main_image"); ?>"/>
 					</div>	
-					<div class="content col-lg-8 col-md-8">
+					<div class="about-content col-lg-8 col-md-8">
 						
 						<?php the_content(); ?>
 					</div>		

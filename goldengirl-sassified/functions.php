@@ -96,6 +96,8 @@ add_action( 'after_setup_theme', 'goldengirl_sassified_content_width', 0 );
  * Enqueue scripts and styles.
  */
 function goldengirl_sassified_scripts() {
+	wp_enqueue_script( 'waypoints', get_template_directory_uri() . '/js/jquery.waypoints.js', array(), false, false );
+
 	wp_enqueue_style( 'goldengirl-sassified-style', get_stylesheet_uri() );
 
 	wp_enqueue_script( 'goldengirl-sassified-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20151215', true );
@@ -211,6 +213,19 @@ function my_register_sidebars() {
 			'id' => 'footer-center',
 			'name' => __( 'Footer Center' ),
 			'description' => __( 'Widget sidebar for center of footer.' ),
+			'before_widget' => '<div id="%1$s" class="widget %2$s">',
+			'after_widget' => '</div>',
+			'before_title' => '<h3 class="widget-title">',
+			'after_title' => '</h3>'
+		)
+	);
+
+	/* Register the 'index-page-sidebar' sidebar. */
+	register_sidebar(
+		array(
+			'id' => 'index-page-sidebar',
+			'name' => __( 'Index Page Sidebar' ),
+			'description' => __( 'Widget sidebar for the Index Page.' ),
 			'before_widget' => '<div id="%1$s" class="widget %2$s">',
 			'after_widget' => '</div>',
 			'before_title' => '<h3 class="widget-title">',
